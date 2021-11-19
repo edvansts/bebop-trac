@@ -1,13 +1,11 @@
-import React from "react";
+import { Layout } from "antd";
+import Topbar from "./components/topbar/Topbar";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <h1>Hello World</h1>
-      </header>
-    </div>
+    <Layout>
+      <Topbar />
+    </Layout>
   );
 }
 

@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --black: #000;
+    --white: #fff;
+    --background: #f2f3f5;
+    --gray-line: #dcdde0;
+    --hover: rgba(211, 211, 211, 0.9);
+
+    --text: #666666;
+    --text-highlight: #b3b9ff;
+    --title: #2e384d;
+
+    --red: #e83f5b;
+    --red-light: #FFF5F5;
+
+    --green: #4cd62b;
+    --green-light: #F7FFF5;
+    --green-dark: #3FB023;
+
+    --blue: #5965e0;
+    --blue-light: #F5FCFF;
+    --blue-dark: #4953b8;
+    --blue-twitter: #2aa9e0;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+}
+
+@media (max-width: 1080px) {
+    html {
+        font-size: 93.75%;
+    }
+}
+
+@media (max-width: 720px) {
+    html {
+        font-size: 87.5%;
+    }
+}
+
+@media (max-width: 360px) {
+    html {
+        font-size: 81.25%;
+    }
+}
+
+body,
+input,
+button,
+textarea {
+    font: 400 16px 'Roboto', sans-serif;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
