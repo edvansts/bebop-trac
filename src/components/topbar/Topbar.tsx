@@ -1,22 +1,13 @@
-import { Image, Layout, Button } from "antd";
-
-import logo from "../../assets/logo.png";
-
 import styles from "./Topbar.module.scss";
+
+import { Layout, Button } from "antd";
 
 function Topbar() {
   return (
     <Layout.Header>
-      <div className={styles.innerHeader}>
-        <Image
-          src={logo}
-          alt="logo"
-          preview={false}
-          className={styles.logo}
-          height="100%"
-        />
+      {/* <div className={styles.innerHeader}> */}
 
-        <ul className={styles.navigation}>
+      {/* <ul className={styles.navigation}>
           <Button type="link" href="/">
             <li>Home</li>
           </Button>
@@ -32,8 +23,8 @@ function Topbar() {
           <Button type="link" href="/usuarios">
             <li>Usuários</li>
           </Button>
-        </ul>
-      </div>
+        </ul> */}
+      {/* </div> */}
     </Layout.Header>
   );
 }

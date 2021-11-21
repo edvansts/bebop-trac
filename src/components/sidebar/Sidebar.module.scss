@@ -1,0 +1,28 @@
+.sider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 0 0.625rem 0.625rem 0.625rem 0.625rem;
+
+    .logoContainer {
+        height: 64px;
+        padding: 0.5rem;
+        img {
+            border-radius: 0.625rem;
+        }
+
+    }
+
+    ul {
+        margin-top: 1.25rem;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        height: 100%;
+
+        button + button {
+            margin-top: 0.625rem;
+        }
+    }
+}

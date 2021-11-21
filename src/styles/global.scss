@@ -53,6 +53,10 @@ body {
     color: var(--text);
 }
 
+#root {
+    min-height: 100vh;
+}
+
 @media (max-width: 1080px) {
     html {
         font-size: 93.75%;
@@ -75,7 +79,8 @@ body,
 input,
 button,
 textarea {
-    font: 400 16px 'Roboto', sans-serif;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
 }
 
 button {
