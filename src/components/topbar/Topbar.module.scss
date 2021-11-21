@@ -1,0 +1,24 @@
+.innerHeader {
+    max-width: 50rem;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0.625rem 0;
+    display: flex;
+    align-items: center;
+
+    .logo {
+        justify-self: flex-start;
+    }
+
+    .navigation {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0;
+        overflow-x: auto;
+    }
+}
+
+
+
+
