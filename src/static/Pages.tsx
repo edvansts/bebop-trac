@@ -8,6 +8,8 @@ import {
 import { find } from "lodash";
 import { ReactElement, ReactNode } from "react";
 
+import Ativos from "../pages/ativos/Ativos";
+
 export interface IPage {
   title: string;
   key: string;
@@ -33,7 +35,7 @@ export const PAGES: Record<string, IPage> = {
     title: "Ativos",
     path: "ativos/*",
     icon: <DatabaseOutlined />,
-    component: <div>hello ativos</div>,
+    component: <Ativos />,
   },
   empresas: {
     key: "empresas",

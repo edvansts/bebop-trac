@@ -19,5 +19,5 @@ export type LayoutAction = ToggleSidebar | ChangePageActive;
 
 export interface LayoutReducer {
   collapsed: boolean;
-  pageActive: IPage;
+  pageActive: Omit<IPage, "icon" | "component">;
 }

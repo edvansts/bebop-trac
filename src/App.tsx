@@ -21,7 +21,7 @@ function App() {
   }, [dispatch, location]);
 
   return (
-    <Layout style={{ height: "100vh" }}>
+    <Layout style={{ minHeight: "100vh" }}>
       <Sidebar />
       <Layout>
         <Topbar />
