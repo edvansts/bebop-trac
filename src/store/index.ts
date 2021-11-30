@@ -1,9 +1,10 @@
+import createSagaMiddleware from "redux-saga";
+import { configureStore } from "@reduxjs/toolkit";
+
 import { LayoutReducer } from "./modules/layout/types";
 import RootReducer from "./modules/RootReducer";
-import createSagaMiddleware from "redux-saga";
 import RootSaga from "./modules/RootSaga";
 import { mainApi } from "./api/Endpoints";
-import { configureStore } from "@reduxjs/toolkit";
 
 export interface IState {
   layout: LayoutReducer;

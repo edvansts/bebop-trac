@@ -2,7 +2,6 @@ import styles from "./Sidebar.module.scss";
 
 import { Layout, Image, Menu } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-
 import { values } from "lodash";
 import { useNavigate } from "react-router-dom";
 

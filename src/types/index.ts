@@ -1,8 +1,10 @@
+export type AssetStatus = "inAlert" | "inDowntime" | "inOperation";
+
 export interface Asset {
   id: number;
   sensors: string[];
   model: string;
-  status: string;
+  status: AssetStatus;
   healthscore: number;
   name: string;
   image: string;
