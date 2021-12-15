@@ -38,7 +38,6 @@
     // $error-color: var(--red); // error state color
     // $font-size-base: 16px; // major text font size
     // $heading-color: rgba(0, 0, 0, 0.85); // heading text color
-    // $text-color: rgba(0, 0, 0, 0.65); // major text color
     // $text-color-secondary: rgba(0, 0, 0, 0.45); // secondary text color
     // $disabled-color: rgba(0, 0, 0, 0.25); // disable state color
     // $border-radius-base: 2px; // major border radius
@@ -47,10 +46,9 @@
     //   0 9px 28px 8px rgba(0, 0, 0, 0.05); // major shadow for layers
 }
 
-
 body {
     background-color: var(--background);
-    color: var(--text);
+    color: var(--text) !important;
 }
 
 #root {

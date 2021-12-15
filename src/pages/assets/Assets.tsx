@@ -1,11 +1,9 @@
 import { useState } from "react";
-import { LoadingOutlined } from "@ant-design/icons";
-import { Layout, Row, Col, Card, Divider } from "antd";
-// import { isArray, isObject, map } from "lodash";
+import { Layout, Row, Col, Card, Divider, Spin } from "antd";
 
 import { useGetAssetsQuery } from "../../store/api/Endpoints";
 import { Asset, AssetStatus } from "../../types";
-import AssetModal from "../../components/assetModal/AssetModal";
+import AssetModal from "../../features/assetModal/AssetModal";
 
 const STATUS: Record<AssetStatus, string> = {
   inAlert: "Em alerta",
@@ -14,10 +12,13 @@ const STATUS: Record<AssetStatus, string> = {
 };
 
 function Ativos() {
-  const { isFetching, isLoading, data: assets } = useGetAssetsQuery();
-  const [assetActive, setAssetActive] = useState<Asset>();
+  const {
+    isFetching,
+    isLoading,
+    data: assets,
+  } = useGetAssetsQuery(undefined, { refetchOnMountOrArgChange: true });
 
-  if (isLoading || isFetching) return <LoadingOutlined size={100} />;
+  const [assetActive, setAssetActive] = useState<Asset>();
 
   function handleClickCard(asset: Asset) {
     setAssetActive(asset);
@@ -31,22 +32,24 @@ function Ativos() {
     <Layout.Content style={{ margin: 40 }}>
       <Divider orientation="left">Ativos</Divider>
 
-      <Row gutter={[20, 20]}>
-        {assets?.map((asset) => (
-          <Col key={asset.id} span={8} onClick={() => handleClickCard(asset)}>
-            <Card
-              bordered
-              hoverable
-              cover={<img alt={asset.name} src={asset.image} />}
-            >
-              <Card.Meta
-                title={asset.name}
-                description={STATUS[asset.status]}
-              />
-            </Card>
-          </Col>
-        ))}
-      </Row>
+      <Spin size="large" spinning={isLoading || isFetching}>
+        <Row gutter={[20, 20]}>
+          {assets?.map((asset) => (
+            <Col key={asset.id} span={8} onClick={() => handleClickCard(asset)}>
+              <Card
+                bordered
+                hoverable
+                cover={<img alt={asset.name} src={asset.image} />}
+              >
+                <Card.Meta
+                  title={asset.name}
+                  description={STATUS[asset.status]}
+                />
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </Spin>
 
       {assetActive ? (
         <AssetModal onClose={handleCloseAssetModal} asset={assetActive} />

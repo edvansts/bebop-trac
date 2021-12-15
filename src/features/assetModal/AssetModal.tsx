@@ -1,5 +1,5 @@
-import React from "react";
 import { Modal } from "antd";
+import ReactJson from "react-json-view";
 import { Asset } from "../../types";
 
 interface AssetModalProps {
@@ -15,7 +15,10 @@ function AssetModal({ asset, onClose }: AssetModalProps) {
       closable
       onCancel={onClose}
       footer={null}
-    ></Modal>
+      style={{ minWidth: "600px" }}
+    >
+      <ReactJson src={asset} theme="google" />
+    </Modal>
   );
 }
 

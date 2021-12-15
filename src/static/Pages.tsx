@@ -9,6 +9,7 @@ import { find } from "lodash";
 import { ReactElement, ReactNode } from "react";
 
 import Assets from "../pages/assets/Assets";
+import Units from "../pages/units/Units";
 
 export interface IPage {
   title: string;
@@ -51,7 +52,7 @@ export const PAGES: Record<string, IPage> = {
     title: "Unidades",
     path: "unidades/*",
     icon: <AimOutlined />,
-    component: <div>hello unidades</div>,
+    component: <Units />,
   },
   usuarios: {
     key: "usuarios",
