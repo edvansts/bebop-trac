@@ -10,6 +10,9 @@ import { ReactElement, ReactNode } from "react";
 
 import Assets from "../pages/assets/Assets";
 import Units from "../pages/units/Units";
+import Users from "../pages/users/Users";
+import Companies from "../pages/companies/Companies";
+import Dashboard from "../pages/dashboard/Dashboard";
 
 export interface IPage {
   title: string;
@@ -28,7 +31,7 @@ export const PAGES: Record<string, IPage> = {
     title: "Home",
     path: "/",
     icon: <HomeOutlined />,
-    component: <div>hello world</div>,
+    component: <Dashboard />,
   },
   ativos: {
     key: "ativos",
@@ -44,7 +47,7 @@ export const PAGES: Record<string, IPage> = {
     title: "Empresas",
     path: "empresas/*",
     icon: <ShopOutlined />,
-    component: <div>hello empresas</div>,
+    component: <Companies />,
   },
   Unidades: {
     key: "unidades",
@@ -60,7 +63,7 @@ export const PAGES: Record<string, IPage> = {
     title: "Usuários",
     path: "usuarios/*",
     icon: <TeamOutlined />,
-    component: <div>hello usuarios</div>,
+    component: <Users />,
   },
 };
 
