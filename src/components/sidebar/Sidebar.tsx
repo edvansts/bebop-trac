@@ -13,7 +13,6 @@ import { PAGES } from "../../static/Pages";
 function Sidebar() {
   const dispatch = useDispatch();
   const collapsed = useSelector((state: IState) => state.layout.collapsed);
-  const pageActive = useSelector((state: IState) => state.layout.pageActive);
 
   const navigate = useNavigate();
 
@@ -33,22 +32,12 @@ function Sidebar() {
             src={logo}
             alt="logo"
             preview={false}
-            height="100%"
+            height="64px"
             onClick={() => navigate("/")}
           />
         </div>
       </div>
-      <Menu theme="dark" mode="inline" selectedKeys={[pageActive.key]}>
-        {values(PAGES).map((page) => (
-          <Menu.Item
-            onClick={() => navigate(page.route)}
-            key={page.key}
-            icon={page.icon}
-          >
-            {page.title}
-          </Menu.Item>
-        ))}
-      </Menu>
+
     </Layout.Sider>
   );
 }

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Routes, Route, useLocation } from "react-router-dom";
 
-import Sidebar from "./components/sidebar/Sidebar";
+// import Sidebar from "./components/sidebar/Sidebar";
 import Topbar from "./components/topbar/Topbar";
 import { PAGES, searchPage } from "./static/Pages";
 import { changePageActive } from "./store/modules/layout/actions";
@@ -22,7 +22,7 @@ function App() {
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
-      <Sidebar />
+      {/* <Sidebar /> */}
       <Layout>
         <Topbar />
 

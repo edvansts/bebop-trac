@@ -1,30 +1,68 @@
-import { Layout } from "antd";
+import { Layout, Menu, Image } from "antd";
+import { values } from "lodash";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { PAGES } from "../../static/Pages";
+import { IState } from "../../store";
+import logo from "../../assets/cutted/logo_white.png";
 
-// import styles from "./Topbar.module.scss";
+import styles from "./Topbar.module.scss";
+import { useMemo } from "react";
+import useScreenModel from "../../hooks/useScreenModel";
 
 function Topbar() {
-  return (
-    <Layout.Header>
-      {/* <div className={styles.innerHeader}> */}
+  const navigate = useNavigate();
 
-      {/* <ul className={styles.navigation}>
-          <Button type="link" href="/">
-            <li>Home</li>
-          </Button>
-          <Button type="link" href="/ativos">
-            <li>Ativos</li>
-          </Button>
-          <Button type="link" href="/empresas">
-            <li>Empresas</li>
-          </Button>
-          <Button type="link" href="/unidades">
-            <li>Unidades</li>
-          </Button>
-          <Button type="link" href="/usuarios">
-            <li>Usuários</li>
-          </Button>
-        </ul> */}
-      {/* </div> */}
+  const pageActive = useSelector((state: IState) => state.layout.pageActive);
+
+  const isMobile = useScreenModel("mobile");
+
+  const pages = useMemo(() => {
+    if (!isMobile || pageActive.key === PAGES.home.key) return values(PAGES);
+
+    const pageChoosed = values(PAGES).find(
+      (page) => page.key === pageActive.key
+    );
+
+    const newPages = [
+      pageChoosed!,
+      ...values(PAGES).filter((page) => page.key !== pageActive.key),
+    ];
+
+    return newPages;
+  }, [pageActive, isMobile]);
+
+  return (
+    <Layout.Header style={{ padding: "0 1.25rem" }}>
+      <div className={`${styles.sider}`}>
+        <div className={styles.logoContainer}>
+          <Image
+            src={logo}
+            alt="logo"
+            preview={false}
+            height="3.125rem"
+            onClick={() => navigate("/")}
+          />
+        </div>
+
+        <Menu
+          theme="dark"
+          mode="horizontal"
+          selectedKeys={[pageActive.key]}
+          className={styles.menu}
+          activeKey={pageActive.key}
+        >
+          {pages.map((page) => (
+            <Menu.Item
+              onClick={() => navigate(page.route)}
+              key={page.key}
+              icon={page.icon}
+            >
+              {page.title}
+            </Menu.Item>
+          ))}
+        </Menu>
+      </div>
     </Layout.Header>
   );
 }

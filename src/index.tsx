@@ -7,7 +7,7 @@ import App from "./App";
 import store from "./store";
 
 import "antd/dist/antd.less";
-// import "antd/dist/antd.dark.less";
+import "antd/dist/antd.dark.less";
 import "./styles/global.scss";
 
 ReactDOM.render(
