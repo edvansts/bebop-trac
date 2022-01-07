@@ -3,14 +3,11 @@ import { Spin } from "antd";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
-import { useGetAssetsQuery } from "../../store/api/Endpoints";
+import useAssetsInfo from "../../hooks/useAssetsInfo";
 
 function AssetsInfo() {
-  const { isFetching, isLoading, data: assets } = useGetAssetsQuery();
-
-  const inAlert = assets?.filter((asset) => asset.status === "inAlert");
-  const inDowntime = assets?.filter((asset) => asset.status === "inDowntime");
-  const inOperation = assets?.filter((asset) => asset.status === "inOperation");
+  const { assets, inAlert, inDowntime, inOperation, isFetching, isLoading } =
+    useAssetsInfo();
 
   return (
     <Spin spinning={isFetching || isLoading} size="large">

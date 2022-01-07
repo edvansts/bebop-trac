@@ -15,7 +15,7 @@ function Topbar() {
 
   const pageActive = useSelector((state: IState) => state.layout.pageActive);
 
-  const isMobile = useScreenModel("mobile");
+  const isMobile = useScreenModel("custom", "(max-width: 530px)");
 
   const pages = useMemo(() => {
     if (!isMobile || pageActive.key === PAGES.home.key) return values(PAGES);
