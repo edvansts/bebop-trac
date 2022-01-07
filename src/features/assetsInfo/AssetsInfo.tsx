@@ -26,7 +26,7 @@ function AssetsInfo() {
               text: `Total de ativos: ${assets?.length}`,
             },
             xAxis: {
-              categories: ["Em alerta", "Inativo", "Em operação"],
+              categories: ["Em funcionamento", "Em alerta", "Inativos"],
               title: {
                 text: null,
               },
@@ -71,16 +71,16 @@ function AssetsInfo() {
                 colorByPoint: true,
                 data: [
                   {
+                    name: "Em funcionamento",
+                    y: inOperation?.length || 0,
+                  },
+                  {
                     name: "Em alerta",
                     y: inAlert?.length || 0,
                   },
                   {
                     name: "Inativo",
                     y: inDowntime?.length || 0,
-                  },
-                  {
-                    name: "Em funcionamento",
-                    y: inOperation?.length || 0,
                   },
                 ],
               },
