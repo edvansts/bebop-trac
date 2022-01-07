@@ -9,22 +9,20 @@ import {
   useGetUsersQuery,
 } from "../../store/api/Endpoints";
 import { AimOutlined, ShopOutlined, TeamOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 
 import styles from "./GeneralStatistics.module.scss";
 
 function GeneralStatistics() {
   const assets = useAssetsInfo();
-
   const users = useGetUsersQuery();
-
   const companies = useGetCompaniesQuery();
-
   const units = useGetUnitsQuery();
 
   return (
     <div className={styles.statisticsContainer}>
       <Card
-        title="Ativos"
+        title={<Link to="/ativos">Ativos</Link>}
         loading={assets.isFetching || assets.isLoading}
         style={{ width: "25rem" }}
       >
@@ -54,7 +52,7 @@ function GeneralStatistics() {
       </Card>
 
       <Card
-        title="Usuários"
+        title={<Link to="/usuarios">Usuários</Link>}
         loading={users.isFetching || users.isLoading}
         style={{ width: "12.5rem" }}
       >
@@ -66,7 +64,7 @@ function GeneralStatistics() {
       </Card>
 
       <Card
-        title="Empresas"
+        title={<Link to="/empresas">Empresas</Link>}
         loading={companies.isFetching || companies.isLoading}
         style={{ width: "12.5rem" }}
       >
@@ -78,7 +76,7 @@ function GeneralStatistics() {
       </Card>
 
       <Card
-        title="Unidades"
+        title={<Link to="/unidades">Unidades</Link>}
         loading={units.isFetching || units.isLoading}
         style={{ width: "12.5rem" }}
       >

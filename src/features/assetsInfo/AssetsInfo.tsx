@@ -4,6 +4,7 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
 import useAssetsInfo from "../../hooks/useAssetsInfo";
+import { colors } from "../../static/colors";
 
 function AssetsInfo() {
   const { assets, inAlert, inDowntime, inOperation, isFetching, isLoading } =
@@ -63,6 +64,7 @@ function AssetsInfo() {
             credits: {
               enabled: false,
             },
+            colors: [colors.green, colors.warn, colors.red],
             series: [
               {
                 name: "Status",
