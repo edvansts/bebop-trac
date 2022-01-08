@@ -1,9 +1,12 @@
 import { useState } from "react";
-import { Layout, Row, Col, Card, Divider, Spin } from "antd";
+import { Layout, Row, Col, Card, Divider, Spin, Image } from "antd";
 
 import { useGetAssetsQuery } from "../../store/api/Endpoints";
 import { Asset, AssetStatus } from "../../types";
 import AssetModal from "../../features/assetModal/AssetModal";
+import useScreenModel from "../../hooks/useScreenModel";
+
+import styles from "./Assets.module.scss";
 
 const STATUS: Record<AssetStatus, string> = {
   inAlert: "Em alerta",
@@ -16,6 +19,9 @@ function Ativos() {
     refetchOnMountOrArgChange: true,
   });
 
+  const isTablet = useScreenModel("tablet");
+  const isMobile = useScreenModel("mobile");
+
   const [assetActive, setAssetActive] = useState<Asset>();
 
   function handleClickCard(asset: Asset) {
@@ -27,17 +33,36 @@ function Ativos() {
   }
 
   return (
-    <Layout.Content style={{ margin: 40 }}>
+    <Layout.Content
+      style={{
+        margin: isTablet ? "1.25rem 1.25rem 0" : "1.25rem 2.5rem 0",
+      }}
+    >
       <Divider orientation="left">Ativos</Divider>
 
       <Spin size="large" spinning={isLoading || isFetching}>
         <Row gutter={[20, 20]}>
           {data?.assets?.map((asset) => (
-            <Col key={asset.id} span={8} onClick={() => handleClickCard(asset)}>
+            <Col
+              key={asset.id}
+              span={isMobile ? 24 : isTablet ? 12 : 8}
+              onClick={() => handleClickCard(asset)}
+            >
               <Card
+                style={{ height: "100%" }}
                 bordered
                 hoverable
-                cover={<img alt={asset.name} src={asset.image} />}
+                cover={
+                  <div className={styles.cardImageContainer}>
+                    <Image
+                      onClick={(event) => event.stopPropagation()}
+                      alt={asset.name}
+                      src={asset.image}
+                      width="auto"
+                      height="15.625rem"
+                    />
+                  </div>
+                }
               >
                 <Card.Meta
                   title={asset.name}
