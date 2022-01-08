@@ -21,17 +21,16 @@ function App() {
   }, [dispatch, location]);
 
   return (
-    <Layout style={{ minHeight: "100vh" }}>
+    <Layout style={{ minHeight: "100vh", paddingBottom: "2.5rem" }}>
       {/* <Sidebar /> */}
-      <Layout>
-        <Topbar />
 
-        <Routes>
-          {values(PAGES).map((page) => (
-            <Route key={page.key} path={page.path} element={page.component} />
-          ))}
-        </Routes>
-      </Layout>
+      <Topbar />
+
+      <Routes>
+        {values(PAGES).map((page) => (
+          <Route key={page.key} path={page.path} element={page.component} />
+        ))}
+      </Routes>
     </Layout>
   );
 }

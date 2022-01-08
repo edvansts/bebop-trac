@@ -83,7 +83,7 @@ function GeneralStatistics() {
 
           {assetsInativedThisWeekPercentage ? (
             <Statistic
-              title="Inativos na última semana"
+              title="Inativados na última semana"
               value={assets.data?.assetsInativedThisWeek}
               precision={1}
               valueStyle={{ color: colors.red }}

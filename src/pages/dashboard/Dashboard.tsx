@@ -6,11 +6,12 @@ import useScreenModel from "../../hooks/useScreenModel";
 
 function Dashboard() {
   const isTablet = useScreenModel("tablet");
+  const isMobile = useScreenModel("mobile");
 
   return (
     <Layout.Content
       style={{
-        margin: isTablet ? "1.25rem 1.25rem 2.5rem" : "1.25rem 2.5rem 2.5rem",
+        margin: isTablet ? "1.25rem 1.25rem 0" : "1.25rem 2.5rem 0",
       }}
     >
       {/* <Divider orientation="left">
@@ -21,14 +22,11 @@ function Dashboard() {
 
       <GeneralStatistics />
 
-      <Row>
-        <Col
-          span={isTablet ? 24 : 12}
-          className={`${isTablet ? "all-width" : ""}`}
-        >
+      <Row gutter={[isMobile ? 0 : 16, 20]}>
+        <Col span={isTablet ? 24 : 12}>
           <AssetsInfo />
         </Col>
-        <Col span={isTablet ? 24 : 12}></Col>
+        <Col span={isTablet ? 24 : 12}>{/* <AssetsInfo /> */}</Col>
       </Row>
     </Layout.Content>
   );

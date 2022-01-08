@@ -1,8 +1,8 @@
-.sider {
+.topbar {
     display: grid;
     align-items: center;
-    height: 64px;
-    grid-template-columns: 200px 1fr;
+    height: 4rem;
+    grid-template-columns: 12.5rem 1fr;
     gap: 1.25rem;
     max-width: 100%;
 
@@ -21,8 +21,20 @@
         display: flex;
         flex: 1;
         justify-content: center;
+        padding-right: 12.5rem;
+    }
+
+    @include MediaQueryMobile {
+        grid-template-columns: 11.5rem minmax(0, 1fr);
+    }
+
+    @include MediaQueryTablet {
+        .menu {
+            padding-right: 0;
+        }
     }
 }
+
 
 // .innerHeader {
 //     max-width: 50rem;

@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { Layout, Menu, Image } from "antd";
 import { values } from "lodash";
 import { useSelector } from "react-redux";
@@ -5,10 +6,9 @@ import { useNavigate } from "react-router-dom";
 import { PAGES } from "../../static/Pages";
 import { IState } from "../../store";
 import logo from "../../assets/cutted/logo_white.png";
+import useScreenModel from "../../hooks/useScreenModel";
 
 import styles from "./Topbar.module.scss";
-import { useMemo } from "react";
-import useScreenModel from "../../hooks/useScreenModel";
 
 function Topbar() {
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ function Topbar() {
 
   return (
     <Layout.Header style={{ padding: "0 1.25rem" }}>
-      <div className={`${styles.sider}`}>
+      <div className={`${styles.topbar}`}>
         <div className={styles.logoContainer}>
           <Image
             src={logo}
