@@ -7,3 +7,15 @@
     flex-wrap: wrap;
     margin: 1.25rem 0;
 }
+
+.assetsCard {
+    display: flex;
+    gap: 1rem;
+}
+
+@include MediaQueryMobile {
+    .assetsCard {
+        flex-direction: column;
+    }
+}
+

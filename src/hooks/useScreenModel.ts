@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 import { useMediaQuery } from "react-responsive";
-import { MediaQueryMobile } from "../static/constants";
+import { MediaQueryMobile, MediaQueryTablet } from "../static/Styles";
 
-type Screens = "mobile" | "custom";
+type Screens = "mobile" | "custom" | "tablet";
 
 function useScreenModel(screenType: Screens, customModel?: string) {
   const queryType = useMemo(() => {
@@ -11,6 +11,8 @@ function useScreenModel(screenType: Screens, customModel?: string) {
         return MediaQueryMobile;
       case "custom":
         return customModel;
+      case "tablet":
+        return MediaQueryTablet;
       default:
         return MediaQueryMobile;
     }

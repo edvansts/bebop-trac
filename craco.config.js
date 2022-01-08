@@ -1,4 +1,5 @@
 const CracoLessPlugin = require("craco-less");
+const CracoSassResourcesLoader = require("craco-sass-resources-loader");
 
 module.exports = {
   plugins: [
@@ -14,6 +15,12 @@ module.exports = {
             javascriptEnabled: true,
           },
         },
+      },
+    },
+    {
+      plugin: CracoSassResourcesLoader,
+      options: {
+        resources: ["./src/styles/mixins.scss"],
       },
     },
   ],

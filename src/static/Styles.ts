@@ -23,3 +23,6 @@ export const colors = {
   blueDark: "#4953b8",
   blueTwitter: "#2aa9e0",
 };
+
+export const MediaQueryMobile = "(max-width: 768px)";
+export const MediaQueryTablet = "(max-width: 1080px)";

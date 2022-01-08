@@ -21,11 +21,19 @@ export const mainApi = createApi({
           (asset) => asset.status === "inOperation"
         );
 
+        const newAssetsThisWeek = Math.ceil(Math.random() * response.length);
+
+        const assetsInativedThisWeek = Math.ceil(
+          (Math.random() * response.length) / 2
+        );
+
         return {
           assets: response,
           inAlert,
           inDowntime,
           inOperation,
+          newAssetsThisWeek,
+          assetsInativedThisWeek,
         };
       },
       providesTags: ["assets"],

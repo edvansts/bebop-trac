@@ -5,4 +5,6 @@ export interface AssetsList {
   inAlert: Asset[];
   inDowntime: Asset[];
   inOperation: Asset[];
+  newAssetsThisWeek: number;
+  assetsInativedThisWeek: number;
 }

@@ -10,3 +10,11 @@ export const removeProperties = (object: any, keys: string[]): any => {
 
   return object;
 };
+
+export const percentage = (value: number, total: number) => {
+  if (total <= 0 || value <= 0) return 0;
+
+  const percentageValue = ((value / total) * 100).toFixed(2);
+
+  return Number(percentageValue);
+};

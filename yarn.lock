@@ -2773,6 +2773,11 @@ async@^2.6.2:
   dependencies:
     lodash "^4.17.14"
 
+async@^3.2.0:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/async/-/async-3.2.2.tgz#2eb7671034bb2194d45d30e31e24ec7e7f9670cd"
+  integrity sha512-H0E+qZaDEfx/FY4t7iLRv1W2fFI6+pyCeTw1uN20AQPiwqwM6ojPxHxdLv4z8hi2DtnW9BOckSspLucW7pIE5g==
+
 asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
@@ -3930,6 +3935,13 @@ craco-less@^1.20.0:
   dependencies:
     less "^4.1.1"
     less-loader "^7.3.0"
+
+craco-sass-resources-loader@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/craco-sass-resources-loader/-/craco-sass-resources-loader-1.1.0.tgz#b9d584e28896785e329856b5796735e8e487e09c"
+  integrity sha512-JRRpuK5xKoaH3Zch/geGhoVrE5b/b4MTV2wOUFA+otZ5ANn+58+UQmA+RYSUubJFR+62i2leo8n8RMZFNSMpLg==
+  dependencies:
+    sass-resources-loader "^2.0.0"
 
 create-ecdh@^4.0.0:
   version "4.0.4"
@@ -10942,6 +10954,16 @@ sass-loader@^10.0.5:
     neo-async "^2.6.2"
     schema-utils "^3.0.0"
     semver "^7.3.2"
+
+sass-resources-loader@^2.0.0:
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/sass-resources-loader/-/sass-resources-loader-2.2.4.tgz#1a86fba499e74a88cb7ce95f0c98449f348d360e"
+  integrity sha512-hIQhBygYky+rLf+4cuoGYONZ623CEH4Swo1fs1WRJkukbqdvN1VIu2KCL59du6vX92bNELzNkGPLx+NorN73xA==
+  dependencies:
+    async "^3.2.0"
+    chalk "^4.1.0"
+    glob "^7.1.6"
+    loader-utils "^2.0.0"
 
 sax@^1.2.4, sax@~1.2.4:
   version "1.2.4"
