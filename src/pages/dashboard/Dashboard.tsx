@@ -3,6 +3,7 @@ import { Col, Layout, Row } from "antd";
 import AssetsInfo from "../../features/assetsInfo/AssetsInfo";
 import GeneralStatistics from "../../components/general-statistics/GeneralStatistics";
 import useScreenModel from "../../hooks/useScreenModel";
+import AssetsWeekInfo from "../../features/assetsWeekInfo/AssetsWeekInfo";
 
 function Dashboard() {
   const isTablet = useScreenModel("tablet");
@@ -26,7 +27,9 @@ function Dashboard() {
         <Col span={isTablet ? 24 : 12}>
           <AssetsInfo />
         </Col>
-        <Col span={isTablet ? 24 : 12}>{/* <AssetsInfo /> */}</Col>
+        <Col span={isTablet ? 24 : 12}>
+          <AssetsWeekInfo />
+        </Col>
       </Row>
     </Layout.Content>
   );

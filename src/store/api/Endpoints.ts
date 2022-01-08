@@ -1,7 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { API_URL } from "../../static/constants";
 import { Asset, Company, Unit, User } from "../../types";
-import { AssetsList } from "../../types/dto";
+import { AssetsList, DayInfo } from "../../types/dto";
+import { subDays, addDays } from "date-fns";
 
 export const mainApi = createApi({
   reducerPath: "mainApi",
@@ -27,6 +28,26 @@ export const mainApi = createApi({
           (Math.random() * response.length) / 2
         );
 
+        const initialDate = subDays(new Date(), 7);
+        let lastWeekInfo: DayInfo[] = [];
+
+        for (let i = 0; i < 7; i++) {
+          const info = {
+            day: addDays(initialDate, i),
+            assetsInAlert:
+              Math.round(Math.random() * inAlert.length) +
+              Math.ceil(Math.random() * 10),
+            assetsInOperation:
+              Math.round(Math.random() * inOperation.length) +
+              Math.ceil(Math.random() * 10),
+            assetsInDowntime:
+              Math.round(Math.random() * inDowntime.length) +
+              Math.ceil(Math.random() * 10),
+          };
+
+          lastWeekInfo = [...lastWeekInfo, info];
+        }
+
         return {
           assets: response,
           inAlert,
@@ -34,6 +55,7 @@ export const mainApi = createApi({
           inOperation,
           newAssetsThisWeek,
           assetsInativedThisWeek,
+          lastWeekInfo,
         };
       },
       providesTags: ["assets"],

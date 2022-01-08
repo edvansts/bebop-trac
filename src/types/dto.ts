@@ -7,4 +7,12 @@ export interface AssetsList {
   inOperation: Asset[];
   newAssetsThisWeek: number;
   assetsInativedThisWeek: number;
+  lastWeekInfo: DayInfo[];
+}
+
+export interface DayInfo {
+  day: Date;
+  assetsInAlert: number;
+  assetsInOperation: number;
+  assetsInDowntime: number;
 }
