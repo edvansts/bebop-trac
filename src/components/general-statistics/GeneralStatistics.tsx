@@ -1,9 +1,9 @@
 import React from "react";
 
 import { Card, Col, Row, Statistic } from "antd";
-import useAssetsInfo from "../../hooks/useAssetsInfo";
 import { colors } from "../../static/colors";
 import {
+  useGetAssetsQuery,
   useGetCompaniesQuery,
   useGetUnitsQuery,
   useGetUsersQuery,
@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 import styles from "./GeneralStatistics.module.scss";
 
 function GeneralStatistics() {
-  const assets = useAssetsInfo();
+  const assets = useGetAssetsQuery();
   const users = useGetUsersQuery();
   const companies = useGetCompaniesQuery();
   const units = useGetUnitsQuery();
@@ -23,28 +23,28 @@ function GeneralStatistics() {
     <div className={styles.statisticsContainer}>
       <Card
         title={<Link to="/ativos">Ativos</Link>}
-        loading={assets.isFetching || assets.isLoading}
+        loading={assets.isLoading}
         style={{ width: "25rem" }}
       >
         <Row gutter={16} justify="center">
           <Col span={8}>
             <Statistic
               title="Operando"
-              value={assets.inOperation?.length}
+              value={assets.data?.inOperation?.length}
               valueStyle={{ color: colors.green }}
             />
           </Col>
           <Col span={8}>
             <Statistic
               title="Em alerta"
-              value={assets.inAlert?.length}
+              value={assets.data?.inAlert?.length}
               valueStyle={{ color: colors.warn }}
             />
           </Col>
           <Col span={8}>
             <Statistic
               title="Inativos"
-              value={assets.inDowntime?.length}
+              value={assets.data?.inDowntime?.length}
               valueStyle={{ color: colors.red }}
             />
           </Col>
@@ -53,7 +53,7 @@ function GeneralStatistics() {
 
       <Card
         title={<Link to="/usuarios">Usuários</Link>}
-        loading={users.isFetching || users.isLoading}
+        loading={users.isLoading}
         style={{ width: "12.5rem" }}
       >
         <Statistic
@@ -65,7 +65,7 @@ function GeneralStatistics() {
 
       <Card
         title={<Link to="/empresas">Empresas</Link>}
-        loading={companies.isFetching || companies.isLoading}
+        loading={companies.isLoading}
         style={{ width: "12.5rem" }}
       >
         <Statistic
@@ -77,7 +77,7 @@ function GeneralStatistics() {
 
       <Card
         title={<Link to="/unidades">Unidades</Link>}
-        loading={units.isFetching || units.isLoading}
+        loading={units.isLoading}
         style={{ width: "12.5rem" }}
       >
         <Statistic

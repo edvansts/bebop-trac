@@ -3,16 +3,18 @@ import { Spin } from "antd";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
-import useAssetsInfo from "../../hooks/useAssetsInfo";
 import { colors } from "../../static/colors";
+import { useGetAssetsQuery } from "../../store/api/Endpoints";
+import { isUndefined } from "lodash";
 
 function AssetsInfo() {
-  const { assets, inAlert, inDowntime, inOperation, isFetching, isLoading } =
-    useAssetsInfo();
+  const { data, isLoading } = useGetAssetsQuery(undefined, {
+    pollingInterval: 60000,
+  });
 
   return (
-    <Spin spinning={isFetching || isLoading} size="large">
-      {!isFetching ? (
+    <Spin spinning={isLoading} size="large">
+      {!isUndefined(data?.assets) ? (
         <HighchartsReact
           highcharts={Highcharts}
           options={{
@@ -23,7 +25,7 @@ function AssetsInfo() {
               text: "Condição dos ativos",
             },
             subtitle: {
-              text: `Total de ativos: ${assets?.length}`,
+              text: `Total de ativos: ${data?.assets?.length}`,
             },
             xAxis: {
               categories: ["Em funcionamento", "Em alerta", "Inativos"],
@@ -72,15 +74,15 @@ function AssetsInfo() {
                 data: [
                   {
                     name: "Em funcionamento",
-                    y: inOperation?.length || 0,
+                    y: data?.inOperation?.length || 0,
                   },
                   {
                     name: "Em alerta",
-                    y: inAlert?.length || 0,
+                    y: data?.inAlert.length || 0,
                   },
                   {
                     name: "Inativo",
-                    y: inDowntime?.length || 0,
+                    y: data?.inDowntime?.length || 0,
                   },
                 ],
               },

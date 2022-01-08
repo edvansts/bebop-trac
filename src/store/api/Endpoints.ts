@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { API_URL } from "../../static/constants";
 import { Asset, Company, Unit, User } from "../../types";
+import { AssetsList } from "../../types/dto";
 
 export const mainApi = createApi({
   reducerPath: "mainApi",
@@ -9,9 +10,24 @@ export const mainApi = createApi({
   keepUnusedDataFor: 120,
   endpoints: (builder) => ({
     /* --------------------------------- Assets --------------------------------- */
-    getAssets: builder.query<Asset[], void>({
+    getAssets: builder.query<AssetsList, void>({
       query: () => `/assets`,
-      transformResponse: (response: Asset[]) => response,
+      transformResponse: (response: Asset[]) => {
+        const inAlert = response.filter((asset) => asset.status === "inAlert");
+        const inDowntime = response.filter(
+          (asset) => asset.status === "inDowntime"
+        );
+        const inOperation = response.filter(
+          (asset) => asset.status === "inOperation"
+        );
+
+        return {
+          assets: response,
+          inAlert,
+          inDowntime,
+          inOperation,
+        };
+      },
       providesTags: ["assets"],
     }),
 

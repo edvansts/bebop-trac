@@ -12,11 +12,9 @@ const STATUS: Record<AssetStatus, string> = {
 };
 
 function Ativos() {
-  const {
-    isFetching,
-    isLoading,
-    data: assets,
-  } = useGetAssetsQuery(undefined, { refetchOnMountOrArgChange: true });
+  const { isFetching, isLoading, data } = useGetAssetsQuery(undefined, {
+    refetchOnMountOrArgChange: true,
+  });
 
   const [assetActive, setAssetActive] = useState<Asset>();
 
@@ -34,7 +32,7 @@ function Ativos() {
 
       <Spin size="large" spinning={isLoading || isFetching}>
         <Row gutter={[20, 20]}>
-          {assets?.map((asset) => (
+          {data?.assets?.map((asset) => (
             <Col key={asset.id} span={8} onClick={() => handleClickCard(asset)}>
               <Card
                 bordered
