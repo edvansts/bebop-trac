@@ -9,7 +9,7 @@ const INITIAL_STATE: LayoutReducer = {
   pageActive: removeProperties(PAGES.home, ["icon", "component"]),
 };
 
-const layout: Reducer<LayoutReducer, LayoutAction> = (
+const layoutReducer: Reducer<LayoutReducer, LayoutAction> = (
   state = INITIAL_STATE,
   action
 ) => {
@@ -27,10 +27,18 @@ const layout: Reducer<LayoutReducer, LayoutAction> = (
         draft.pageActive = pageNormalized;
 
         break;
+      case ActionTypes.openAssetModal:
+        draft.assetModalActived = action.payload.asset;
+
+        break;
+      case ActionTypes.closeAssetModal:
+        draft.assetModalActived = undefined;
+
+        break;
       default:
         return draft;
     }
   });
 };
 
-export default layout;
+export default layoutReducer;

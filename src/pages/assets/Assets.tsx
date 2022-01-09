@@ -1,10 +1,9 @@
-import { useState } from "react";
 import { Layout, Row, Col, Card, Divider, Spin, Image } from "antd";
-
 import { useGetAssetsQuery } from "../../store/api/Endpoints";
 import { Asset, AssetStatus } from "../../types";
-import AssetModal from "../../features/assetModal/AssetModal";
 import useScreenModel from "../../hooks/useScreenModel";
+import { useDispatch } from "react-redux";
+import { openAssetModal } from "../../store/modules/layout/actions";
 
 import styles from "./Assets.module.scss";
 
@@ -15,6 +14,8 @@ const STATUS: Record<AssetStatus, string> = {
 };
 
 function Ativos() {
+  const dispatch = useDispatch();
+
   const { isFetching, isLoading, data } = useGetAssetsQuery(undefined, {
     refetchOnMountOrArgChange: true,
   });
@@ -22,14 +23,10 @@ function Ativos() {
   const isTablet = useScreenModel("tablet");
   const isMobile = useScreenModel("mobile");
 
-  const [assetActive, setAssetActive] = useState<Asset>();
+  const spanSize = isMobile ? 24 : isTablet ? 12 : 8;
 
   function handleClickCard(asset: Asset) {
-    setAssetActive(asset);
-  }
-
-  function handleCloseAssetModal() {
-    setAssetActive(undefined);
+    dispatch(openAssetModal(asset));
   }
 
   return (
@@ -45,7 +42,7 @@ function Ativos() {
           {data?.assets?.map((asset) => (
             <Col
               key={asset.id}
-              span={isMobile ? 24 : isTablet ? 12 : 8}
+              span={spanSize}
               onClick={() => handleClickCard(asset)}
             >
               <Card
@@ -73,10 +70,6 @@ function Ativos() {
           ))}
         </Row>
       </Spin>
-
-      {assetActive ? (
-        <AssetModal onClose={handleCloseAssetModal} asset={assetActive} />
-      ) : null}
     </Layout.Content>
   );
 }

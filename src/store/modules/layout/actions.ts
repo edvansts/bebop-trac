@@ -1,5 +1,12 @@
 import { IPage } from "../../../static/Pages";
-import { ActionTypes, ChangePageActive, ToggleSidebar } from "./types";
+import { Asset } from "../../../types";
+import {
+  ActionTypes,
+  ChangePageActive,
+  CloseAssetModal,
+  OpenAssetModal,
+  ToggleSidebar,
+} from "./types";
 
 export function toggleSidebar(): ToggleSidebar {
   return {
@@ -11,5 +18,18 @@ export function changePageActive(page: IPage): ChangePageActive {
   return {
     type: ActionTypes.changePageActive,
     payload: { page },
+  };
+}
+
+export function openAssetModal(asset: Asset): OpenAssetModal {
+  return {
+    type: ActionTypes.openAssetModal,
+    payload: { asset },
+  };
+}
+
+export function closeAssetModal(): CloseAssetModal {
+  return {
+    type: ActionTypes.closeAssetModal,
   };
 }
