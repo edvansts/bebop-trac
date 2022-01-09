@@ -16,7 +16,7 @@ export interface Asset {
   metrics: {
     totalCollectsUptime: number;
     totalUptime: number;
-    lastUptimeAt: number;
+    lastUptimeAt: string;
   };
   unitId: number;
   companyId: number;

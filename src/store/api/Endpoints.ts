@@ -3,6 +3,7 @@ import { API_URL } from "../../static/constants";
 import { Asset, Company, Unit, User } from "../../types";
 import { AssetsList, DayInfo } from "../../types/dto";
 import { subDays, addDays } from "date-fns";
+import { toDate } from "../../static/DateFn";
 
 export const mainApi = createApi({
   reducerPath: "mainApi",
@@ -28,7 +29,7 @@ export const mainApi = createApi({
           (Math.random() * response.length) / 2
         );
 
-        const initialDate = subDays(new Date(), 7);
+        const initialDate = subDays(toDate(), 7);
         let lastWeekInfo: DayInfo[] = [];
 
         for (let i = 0; i < 7; i++) {

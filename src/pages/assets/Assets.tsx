@@ -1,17 +1,14 @@
 import { Layout, Row, Col, Card, Divider, Spin, Image } from "antd";
 import { useGetAssetsQuery } from "../../store/api/Endpoints";
-import { Asset, AssetStatus } from "../../types";
+import { Asset } from "../../types";
 import useScreenModel from "../../hooks/useScreenModel";
 import { useDispatch } from "react-redux";
 import { openAssetModal } from "../../store/modules/layout/actions";
+import { toDate, format } from "../../static/DateFn";
 
 import styles from "./Assets.module.scss";
-
-const STATUS: Record<AssetStatus, string> = {
-  inAlert: "Em alerta",
-  inDowntime: "Inativo",
-  inOperation: "Em operação",
-};
+import { ASSET_STATUS } from "../../static/constants";
+import HealthScore from "../../components/shared/health-score/HealthScore";
 
 function Ativos() {
   const dispatch = useDispatch();
@@ -27,6 +24,22 @@ function Ativos() {
 
   function handleClickCard(asset: Asset) {
     dispatch(openAssetModal(asset));
+  }
+
+  function renderDescription(asset: Asset) {
+    const status = ASSET_STATUS[asset.status];
+    return (
+      <div>
+        <h3 style={{ color: status.color }}>{status.text}</h3>
+        <p>
+          Última atualização:{" "}
+          {format(toDate(asset.metrics.lastUptimeAt), "dd/MM/yyyy HH/mm")}
+        </p>
+        <p>
+          Status da saúde: <HealthScore healthScore={asset.healthscore} />
+        </p>
+      </div>
+    );
   }
 
   return (
@@ -62,8 +75,8 @@ function Ativos() {
                 }
               >
                 <Card.Meta
-                  title={asset.name}
-                  description={STATUS[asset.status]}
+                  title={<h2>{asset.name}</h2>}
+                  description={renderDescription(asset)}
                 />
               </Card>
             </Col>

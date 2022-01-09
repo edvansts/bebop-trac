@@ -5,8 +5,8 @@ import HighchartsReact from "highcharts-react-official";
 import { isEmpty, isUndefined } from "lodash";
 import { useGetAssetsQuery } from "../../store/api/Endpoints";
 import { colors } from "../../static/Styles";
-import { addDays, format } from "date-fns";
-import subDays from "date-fns/subDays";
+import { addDays, subDays } from "date-fns";
+import { format } from "../../static/DateFn";
 
 function AssetsWeekInfo() {
   const { data, isLoading } = useGetAssetsQuery(undefined, {
