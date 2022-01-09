@@ -18,9 +18,6 @@ function Ativos() {
   });
 
   const isTablet = useScreenModel("tablet");
-  const isMobile = useScreenModel("mobile");
-
-  const spanSize = isMobile ? 24 : isTablet ? 12 : 8;
 
   function handleClickCard(asset: Asset) {
     dispatch(openAssetModal(asset));
@@ -54,8 +51,12 @@ function Ativos() {
         <Row gutter={[20, 20]}>
           {data?.assets?.map((asset) => (
             <Col
+              xs={24}
+              sm={12}
+              md={8}
+              xl={6}
+              xxl={4}
               key={asset.id}
-              span={spanSize}
               onClick={() => handleClickCard(asset)}
             >
               <Card
@@ -69,7 +70,7 @@ function Ativos() {
                       alt={asset.name}
                       src={asset.image}
                       width="auto"
-                      height="15.625rem"
+                      height="14.0625rem"
                     />
                   </div>
                 }
