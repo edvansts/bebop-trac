@@ -30,6 +30,7 @@
     --blue-light: #F5FCFF;
     --blue-dark: #4953b8;
     --blue-twitter: #2aa9e0;
+    --blue-anchor: #1890ff;
 
     // $primary-color: var(--blue); // primary color for all components
     // $link-color: var(--text-highlight); // link color
@@ -83,10 +84,16 @@ textarea {
 
 button {
     cursor: pointer;
+    border: none;
+    background-color: inherit;
 }
 
 a {
     color: inherit;
+}
+
+p {
+    margin-bottom: 0;
 }
 
 .all-width {
@@ -97,4 +104,24 @@ a {
 
 .graph-container {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 0.1875rem 0.5rem;
+}
+
+.disc-list {
+    list-style: disc inside;
+    > * {
+        list-style: disc inside;
+    }
+}
+
+.link {
+    color: inherit;
+    text-decoration: none;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+    transition: color 0.3s;
+
+    &:hover {
+        color: var(--blue-anchor);
+    }
 }

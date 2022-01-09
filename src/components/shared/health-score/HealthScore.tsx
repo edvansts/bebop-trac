@@ -9,7 +9,7 @@ function HealthScore({ healthScore }: HealthScoreProps) {
   const color =
     healthScore > 80
       ? colors.green
-      : healthScore > 50
+      : healthScore > 55
       ? colors.warn
       : colors.red;
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Card, Col, Divider, Layout, Row, Spin } from "antd";
-import InfoModal from "../../features/infoModal/InfoModal";
+import InfoModal from "../../features/info-modal/InfoModal";
 import { useGetUsersQuery } from "../../store/api/Endpoints";
 import { User } from "../../types";
 

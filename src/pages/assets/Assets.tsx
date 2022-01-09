@@ -5,10 +5,10 @@ import useScreenModel from "../../hooks/useScreenModel";
 import { useDispatch } from "react-redux";
 import { openAssetModal } from "../../store/modules/layout/actions";
 import { toDate, format } from "../../static/DateFn";
-
-import styles from "./Assets.module.scss";
 import { ASSET_STATUS } from "../../static/constants";
 import HealthScore from "../../components/shared/health-score/HealthScore";
+
+import styles from "./Assets.module.scss";
 
 function Ativos() {
   const dispatch = useDispatch();
@@ -29,11 +29,11 @@ function Ativos() {
       <div>
         <h3 style={{ color: status.color }}>{status.text}</h3>
         <p>
-          Última atualização:{" "}
-          {format(toDate(asset.metrics.lastUptimeAt), "dd/MM/yyyy HH/mm")}
+          Status da saúde: <HealthScore healthScore={asset.healthscore} />
         </p>
         <p>
-          Status da saúde: <HealthScore healthScore={asset.healthscore} />
+          Última atualização:{" "}
+          {format(toDate(asset.metrics.lastUptimeAt), "dd/MM/yyyy HH:mm")}
         </p>
       </div>
     );
