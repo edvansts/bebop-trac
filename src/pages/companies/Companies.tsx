@@ -1,28 +1,31 @@
-import { useState } from "react";
 import { Card, Col, Divider, Layout, Row, Spin } from "antd";
-import InfoModal from "../../components/info-modal/InfoModal";
 import { useGetCompaniesQuery } from "../../store/api/Endpoints";
 import { Company } from "../../types";
+import { useDispatch } from "react-redux";
+import { openCompanyModal } from "../../store/modules/layout/actions";
+import useScreenModel from "../../hooks/useScreenModel";
 
 function Companies() {
+  const dispatch = useDispatch();
+
+  const isTablet = useScreenModel("tablet");
+
   const {
     isFetching,
     isLoading,
     data: companies,
   } = useGetCompaniesQuery(undefined, { refetchOnMountOrArgChange: true });
 
-  const [companyActive, setCompanyActive] = useState<Company>();
-
   function handleClickCard(company: Company) {
-    setCompanyActive(company);
-  }
-
-  function handleCloseCompanyModal() {
-    setCompanyActive(undefined);
+    dispatch(openCompanyModal(company));
   }
 
   return (
-    <Layout.Content style={{ margin: 40 }}>
+    <Layout.Content
+      style={{
+        margin: isTablet ? "1.25rem 1.25rem 0" : "1.25rem 2.5rem 0",
+      }}
+    >
       <Divider orientation="left">Empresas</Divider>
 
       <Spin size="large" spinning={isLoading || isFetching}>
@@ -30,7 +33,11 @@ function Companies() {
           {companies?.map((company) => (
             <Col
               key={company.id}
-              span={8}
+              xs={24}
+              sm={12}
+              md={8}
+              xl={6}
+              xxl={4}
               onClick={() => handleClickCard(company)}
             >
               <Card bordered hoverable>
@@ -40,10 +47,6 @@ function Companies() {
           ))}
         </Row>
       </Spin>
-
-      {companyActive ? (
-        <InfoModal onClose={handleCloseCompanyModal} object={companyActive} />
-      ) : null}
     </Layout.Content>
   );
 }

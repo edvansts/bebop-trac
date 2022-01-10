@@ -27,12 +27,38 @@ const layoutReducer: Reducer<LayoutReducer, LayoutAction> = (
         draft.pageActive = pageNormalized;
 
         break;
+
       case ActionTypes.openAssetModal:
         draft.assetModalActived = action.payload.asset;
-
         break;
       case ActionTypes.closeAssetModal:
         draft.assetModalActived = undefined;
+        break;
+
+      case ActionTypes.openCompanyModal:
+        draft.companyModalActived = action.payload.company;
+
+        break;
+      case ActionTypes.closeCompanyModal:
+        draft.companyModalActived = undefined;
+
+        break;
+
+      case ActionTypes.openUserModal:
+        draft.userModalActived = action.payload.user;
+
+        break;
+      case ActionTypes.closeUserModal:
+        draft.userModalActived = undefined;
+
+        break;
+
+      case ActionTypes.openUnitModal:
+        draft.unitModalActived = action.payload.unit;
+
+        break;
+      case ActionTypes.closeUnitModal:
+        draft.unitModalActived = undefined;
 
         break;
       default:
