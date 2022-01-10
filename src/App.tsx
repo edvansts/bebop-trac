@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { Routes, Route, useLocation } from "react-router-dom";
 
 // import Sidebar from "./components/sidebar/Sidebar";
-import Topbar from "./components/topbar/Topbar";
+import Topbar from "./features/topbar/Topbar";
 import GlobalModals from "./features/global-modals/GlobalModals";
 import { PAGES, searchPage } from "./static/Pages";
 import { changePageActive } from "./store/modules/layout/actions";

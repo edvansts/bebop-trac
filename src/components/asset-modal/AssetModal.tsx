@@ -1,8 +1,8 @@
 import { Col, Image, Modal, Row } from "antd";
 import { isEmpty } from "lodash";
 import { useDispatch, useSelector } from "react-redux";
-import ButtonAnchor from "../../components/shared/button-anchor/ButtonAnchor";
-import HealthScore from "../../components/shared/health-score/HealthScore";
+import ButtonAnchor from "../../assets/shared/button-anchor/ButtonAnchor";
+import HealthScore from "../../assets/shared/health-score/HealthScore";
 import { ASSET_STATUS } from "../../static/constants";
 import { IState } from "../../store";
 import { closeAssetModal } from "../../store/modules/layout/actions";

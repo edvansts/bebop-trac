@@ -2,7 +2,7 @@ import React from "react";
 import { isEmpty } from "lodash";
 import { useSelector } from "react-redux";
 import { IState } from "../../store";
-import AssetModal from "../asset-modal/AssetModal";
+import AssetModal from "../../components/asset-modal/AssetModal";
 
 function GlobalModals() {
   const assetModalActived = useSelector(

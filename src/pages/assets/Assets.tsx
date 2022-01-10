@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { openAssetModal } from "../../store/modules/layout/actions";
 import { toDate, format } from "../../static/DateFn";
 import { ASSET_STATUS } from "../../static/constants";
-import HealthScore from "../../components/shared/health-score/HealthScore";
+import HealthScore from "../../assets/shared/health-score/HealthScore";
 
 import styles from "./Assets.module.scss";
 

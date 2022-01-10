@@ -1,9 +1,9 @@
 import React from "react";
 import { Col, Layout, Row } from "antd";
-import AssetsInfo from "../../features/assets-info/AssetsInfo";
-import GeneralStatistics from "../../components/general-statistics/GeneralStatistics";
+import AssetsInfo from "../../components/assets-info/AssetsInfo";
+import GeneralStatistics from "../../features/general-statistics/GeneralStatistics";
 import useScreenModel from "../../hooks/useScreenModel";
-import AssetsWeekInfo from "../../features/assets-week-info/AssetsWeekInfo";
+import AssetsWeekInfo from "../../components/assets-week-info/AssetsWeekInfo";
 
 function Dashboard() {
   const isTablet = useScreenModel("tablet");
