@@ -5,6 +5,7 @@ import { IState } from "../../store";
 import AssetModal from "../../components/asset-modal/AssetModal";
 import CompanyModal from "../../components/company-modal/CompanyModal";
 import UnitModal from "../../components/unit-modal/UnitModal";
+import UserModal from "../../components/user-modal/UserModal";
 
 function GlobalModals() {
   const assetModalActived = useSelector(
@@ -15,9 +16,9 @@ function GlobalModals() {
     (state: IState) => !isEmpty(state.layout.companyModalActived)
   );
 
-  // const userModalActived = useSelector(
-  //   (state: IState) => !isEmpty(state.layout.userModalActived)
-  // );
+  const userModalActived = useSelector(
+    (state: IState) => !isEmpty(state.layout.userModalActived)
+  );
 
   const unitModalActived = useSelector(
     (state: IState) => !isEmpty(state.layout.unitModalActived)
@@ -28,6 +29,7 @@ function GlobalModals() {
       {assetModalActived ? <AssetModal /> : null}
       {companyModalActived ? <CompanyModal /> : null}
       {unitModalActived ? <UnitModal /> : null}
+      {userModalActived ? <UserModal /> : null}
     </>
   );
 }
