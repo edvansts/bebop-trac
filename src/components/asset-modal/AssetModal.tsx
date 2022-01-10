@@ -59,17 +59,17 @@ function AssetModal() {
             </>
           ) : null}
 
-          <p>
+          <div>
             <ButtonAnchor onClick={() => {}}>
               <b>Unidade:</b> <span>{asset.unitId}</span>
             </ButtonAnchor>
-          </p>
+          </div>
 
-          <p>
+          <div>
             <ButtonAnchor onClick={() => {}}>
               <b>Empresa:</b> <span>{asset.companyId}</span>
             </ButtonAnchor>
-          </p>
+          </div>
         </Col>
 
         <Col
