@@ -5,7 +5,6 @@ import { useEffect, useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { Routes, Route, useLocation } from "react-router-dom";
 
-// import Sidebar from "./components/sidebar/Sidebar";
 import Topbar from "./features/topbar/Topbar";
 import GlobalModals from "./features/global-modals/GlobalModals";
 import { PAGES, searchPage } from "./static/Pages";
@@ -18,13 +17,13 @@ function App() {
 
   const routeKey = useMemo(() => {
     return location.key;
-  }, [location.pathname]);
+  }, [location.search]);
 
   useEffect(() => {
     const newPageActive = searchPage(values(PAGES), location) || PAGES.home;
 
     dispatch(changePageActive(newPageActive));
-  }, [dispatch, location]);
+  }, [location]);
 
   return (
     <Layout style={{ minHeight: "100vh", paddingBottom: "2.5rem" }}>
