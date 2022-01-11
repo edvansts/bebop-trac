@@ -8,8 +8,17 @@ import { toDate } from "../../static/DateFn";
 export const mainApi = createApi({
   reducerPath: "mainApi",
   baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
-  tagTypes: ["assets", "units", "users", "companies"],
-  keepUnusedDataFor: 120,
+  tagTypes: [
+    "assets",
+    "units",
+    "users",
+    "companies",
+    "assetId",
+    "unitId",
+    "userId",
+    "companyId",
+  ],
+  keepUnusedDataFor: 300,
   endpoints: (builder) => ({
     /* --------------------------------- Assets --------------------------------- */
     getAssets: builder.query<AssetsList, void>({
@@ -64,7 +73,7 @@ export const mainApi = createApi({
 
     getAssetById: builder.query<Asset, string>({
       query: (id) => `/assets/${id}`,
-      providesTags: ["assets"],
+      providesTags: ["assets", "assetId"],
     }),
 
     /* ---------------------------------- Units --------------------------------- */
@@ -76,7 +85,7 @@ export const mainApi = createApi({
 
     getUnitById: builder.query<Unit, string>({
       query: (id) => `/units/${id}`,
-      providesTags: ["units"],
+      providesTags: ["units", "unitId"],
     }),
 
     /* ---------------------------------- Users --------------------------------- */
@@ -88,7 +97,7 @@ export const mainApi = createApi({
 
     getUserById: builder.query<User, string>({
       query: (id) => `/users/${id}`,
-      providesTags: ["users"],
+      providesTags: ["users", "userId"],
     }),
 
     /* ---------------------------------- Companies --------------------------------- */
@@ -100,7 +109,7 @@ export const mainApi = createApi({
 
     getCompanyById: builder.query<Company, string>({
       query: (id) => `/companies/${id}`,
-      providesTags: ["companies"],
+      providesTags: ["companies", "companyId"],
     }),
   }),
 });
