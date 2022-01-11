@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { IState } from "../../store";
 import { closeUserModal } from "../../store/modules/layout/actions";
 import CompanyCard from "../company-card/CompanyCard";
+import UnitCard from "../unit-card/UnitCard";
 
 function UserModal() {
   const dispatch = useDispatch();
@@ -31,10 +32,10 @@ function UserModal() {
           {user.email}
         </Descriptions.Item>
         <Descriptions.Item label={<h4>Unidade</h4>} span={12}>
-          {/* <CompanyCard id={`${user.unitId}`} /> */}
+          <UnitCard id={`${user.unitId}`} onCloseCallback={onClose} />
         </Descriptions.Item>
         <Descriptions.Item label={<h4>Empresa</h4>} span={12}>
-          <CompanyCard id={`${user.companyId}`} />
+          <CompanyCard id={`${user.companyId}`} onCloseCallback={onClose} />
         </Descriptions.Item>
       </Descriptions>
     </Modal>
