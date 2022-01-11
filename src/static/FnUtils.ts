@@ -1,3 +1,5 @@
+import { identity, isObject, pickBy } from "lodash";
+
 export const removeProperty = (propKey: string, object: any) => {
   const { [propKey]: propValue, ...rest } = object;
   return rest;
@@ -18,3 +20,11 @@ export const percentage = (value: number, total: number) => {
 
   return Number(percentageValue);
 };
+
+export function removeUndefinedFromObj<T = any>(value: any) {
+  if (!isObject(value)) {
+    return null;
+  }
+
+  return pickBy(value, identity) as unknown as T;
+}

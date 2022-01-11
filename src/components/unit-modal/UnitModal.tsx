@@ -29,7 +29,7 @@ function UnitModal() {
       </div>
 
       <div>
-        <Link to={`/ativos?unitId=${unit.id}`} onClick={onClose}>
+        <Link to={`/ativos?unitSelected=${unit.id}`} onClick={onClose}>
           <Button type="link" style={{ padding: 0 }}>
             <b>Ver Ativos</b>
           </Button>
@@ -37,7 +37,7 @@ function UnitModal() {
       </div>
 
       <div>
-        <Link to={`/usuarios?unitId=${unit.id}`} onClick={onClose}>
+        <Link to={`/usuarios?unitSelected=${unit.id}`} onClick={onClose}>
           <Button type="link" style={{ padding: 0 }}>
             <b>Ver Usuários</b>
           </Button>

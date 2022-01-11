@@ -31,7 +31,7 @@ function CompanyModal() {
       </p>
 
       <div>
-        <Link to={`/ativos?companyId=${company.id}`} onClick={onClose}>
+        <Link to={`/ativos?companySelected=${company.id}`} onClick={onClose}>
           <Button type="link" style={{ padding: 0 }}>
             <b>Ver Ativos</b>
           </Button>
@@ -39,7 +39,7 @@ function CompanyModal() {
       </div>
 
       <div>
-        <Link to={`/usuarios?companyId=${company.id}`} onClick={onClose}>
+        <Link to={`/usuarios?companySelected=${company.id}`} onClick={onClose}>
           <Button type="link" style={{ padding: 0 }}>
             <b>Ver Usuários</b>
           </Button>
@@ -47,7 +47,7 @@ function CompanyModal() {
       </div>
 
       <div>
-        <Link to={`/unidades?companyId=${company.id}`} onClick={onClose}>
+        <Link to={`/unidades?companySelected=${company.id}`} onClick={onClose}>
           <Button type="link" style={{ padding: 0 }}>
             <b>Ver Unidades</b>
           </Button>
