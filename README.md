@@ -43,6 +43,7 @@ Aqui abaixo estão alguns prints das telas da aplicação:
 
 > ### Home
 > ![image](https://user-images.githubusercontent.com/53586642/148955363-5ecf4f95-8336-4dd2-a152-c778a004762c.png)
+> O gráfico de linha e as informações de novos ativos e inativos são geradas de forma aleatória, logo o gráfico não reflete dados reais da api, e seu intuito é somente visual.
 
 > ### Ativos
 > ![image](https://user-images.githubusercontent.com/53586642/148955467-fdf2d086-5171-4cd3-8c1b-09e8c4312dba.png)
