@@ -1,48 +1,37 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { Button, Form, Select } from "antd";
 import { useSearchParams } from "react-router-dom";
 import {
   useGetCompaniesQuery,
   useGetUnitsQuery,
 } from "../../store/api/Endpoints";
-import { keys } from "lodash";
 import { removeUndefinedFromObj } from "../../static/FnUtils";
-import { ASSET_STATUS } from "../../static/constants";
-import { AssetStatus } from "../../types";
 import useScreenModel from "../../hooks/useScreenModel";
 
-export interface IAssetsListForm {
+export interface IUsersListForm {
   companySelected?: string;
   unitSelected?: string;
-  statusSelected?: string[];
 }
 
-interface AssetsListFormProps {
-  handleSearchAssets(filters: IAssetsListForm): void;
+interface UsersListFormProps {
+  handleSearchUsers(filters: IUsersListForm): void;
   isFetching: boolean;
 }
 
-function AssetsListForm({
-  handleSearchAssets,
-  isFetching,
-}: AssetsListFormProps) {
-  const [assetsListForm] = Form.useForm<IAssetsListForm>();
+function UsersListForm({ handleSearchUsers, isFetching }: UsersListFormProps) {
+  const [usersListForm] = Form.useForm<IUsersListForm>();
 
   const [searchParams, setQueryParams] = useSearchParams();
 
-  const params: IAssetsListForm = useMemo(() => {
+  const params: IUsersListForm = useMemo(() => {
     let newParams: any = {};
 
     searchParams.forEach((value, key) => {
-      if (key === "statusSelected") {
-        return (newParams[key] = [value]);
-      }
-
       newParams[key] = value;
     });
 
-    return newParams as IAssetsListForm;
+    return newParams as IUsersListForm;
   }, []);
 
   const { companies, isFetching: isFetchingCompanies } = useGetCompaniesQuery(
@@ -66,23 +55,23 @@ function AssetsListForm({
     const filters = getFilters();
 
     if (filters) {
-      handleSearchAssets(filters);
+      handleSearchUsers(filters);
     }
   }, []);
 
   function getFilters() {
-    const filters = removeUndefinedFromObj<IAssetsListForm>(
-      assetsListForm.getFieldsValue()
+    const filters = removeUndefinedFromObj<IUsersListForm>(
+      usersListForm.getFieldsValue()
     );
 
     return filters;
   }
 
-  function handleSubmitAssetsListForm() {
+  function handleSubmitUsersListForm() {
     const filters = getFilters();
 
     if (filters) {
-      handleSearchAssets(filters);
+      handleSearchUsers(filters);
       setQueryParams({ ...filters }, { replace: true });
     }
   }
@@ -90,8 +79,8 @@ function AssetsListForm({
   return (
     <Form
       layout={isMobile ? "vertical" : "inline"}
-      form={assetsListForm}
-      onFinish={handleSubmitAssetsListForm}
+      form={usersListForm}
+      onFinish={handleSubmitUsersListForm}
       initialValues={params}
       style={{ gap: "0.75rem" }}
     >
@@ -129,22 +118,6 @@ function AssetsListForm({
         </Select>
       </Form.Item>
 
-      <Form.Item name="statusSelected">
-        <Select
-          showSearch
-          placeholder="Selecione um status"
-          allowClear
-          mode="multiple"
-          style={{ minWidth: isMobile ? "" : "12.5rem" }}
-        >
-          {keys(ASSET_STATUS).map((key) => (
-            <Select.Option key={key} value={key}>
-              {ASSET_STATUS[key as AssetStatus].text}
-            </Select.Option>
-          ))}
-        </Select>
-      </Form.Item>
-
       <Form.Item style={{ marginLeft: "auto" }}>
         <div
           style={{
@@ -162,4 +135,4 @@ function AssetsListForm({
   );
 }
 
-export default AssetsListForm;
+export default UsersListForm;
