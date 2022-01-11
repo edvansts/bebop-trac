@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { IState } from "../../store";
 import { closeUnitModal } from "../../store/modules/layout/actions";
 import { Link } from "react-router-dom";
-import ButtonAnchor from "../../assets/shared/button-anchor/ButtonAnchor";
+import CompanyCard from "../company-card/CompanyCard";
 
 function UnitModal() {
   const dispatch = useDispatch();
@@ -23,9 +23,7 @@ function UnitModal() {
         <b>Id:</b> <span>{unit.id}</span>
       </p>
       <div>
-        <ButtonAnchor onClick={() => {}}>
-          <b>Empresa:</b> <span>{unit.companyId}</span>
-        </ButtonAnchor>
+        <CompanyCard id={String(unit.companyId)} onCloseCallback={onClose} />
       </div>
 
       <div>

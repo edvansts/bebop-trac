@@ -8,7 +8,7 @@ import { openUserModal } from "../../store/modules/layout/actions";
 import UsersListForm, {
   IUsersListForm,
 } from "../../features/users-list-form/UsersListForm";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { isEmpty } from "lodash";
 
 type UserFilters = IUsersListForm;
@@ -62,9 +62,9 @@ function Users() {
     dispatch(openUserModal(user));
   }
 
-  function handleSearchUsers(filters: UserFilters) {
+  const handleSearchUsers = useCallback((filters: UserFilters) => {
     setFilters(filters);
-  }
+  }, []);
 
   return (
     <Layout.Content

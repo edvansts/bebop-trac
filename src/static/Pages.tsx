@@ -6,7 +6,7 @@ import {
   TeamOutlined,
 } from "@ant-design/icons";
 import { find } from "lodash";
-import { ReactElement, ReactNode } from "react";
+import { FunctionComponent, ReactNode } from "react";
 
 import Assets from "../pages/assets/Assets";
 import Units from "../pages/units/Units";
@@ -19,7 +19,7 @@ export interface IPage {
   key: string;
   route: string;
   icon: ReactNode;
-  component: ReactElement;
+  component: FunctionComponent;
   path: string;
   subPages?: IPage[];
 }
@@ -31,7 +31,7 @@ export const PAGES: Record<string, IPage> = {
     title: "Home",
     path: "/",
     icon: <HomeOutlined />,
-    component: <Dashboard />,
+    component: () => <Dashboard />,
   },
   ativos: {
     key: "ativos",
@@ -39,7 +39,7 @@ export const PAGES: Record<string, IPage> = {
     title: "Ativos",
     path: "ativos/*",
     icon: <DatabaseOutlined />,
-    component: <Assets />,
+    component: () => <Assets />,
   },
   empresas: {
     key: "empresas",
@@ -47,7 +47,7 @@ export const PAGES: Record<string, IPage> = {
     title: "Empresas",
     path: "empresas/*",
     icon: <ShopOutlined />,
-    component: <Companies />,
+    component: () => <Companies />,
   },
   Unidades: {
     key: "unidades",
@@ -55,7 +55,7 @@ export const PAGES: Record<string, IPage> = {
     title: "Unidades",
     path: "unidades/*",
     icon: <AimOutlined />,
-    component: <Units />,
+    component: () => <Units />,
   },
   usuarios: {
     key: "usuarios",
@@ -63,7 +63,7 @@ export const PAGES: Record<string, IPage> = {
     title: "Usuários",
     path: "usuarios/*",
     icon: <TeamOutlined />,
-    component: <Users />,
+    component: () => <Users />,
   },
 };
 

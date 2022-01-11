@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Layout } from "antd";
 import { values } from "lodash";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { Routes, Route, useLocation } from "react-router-dom";
 
@@ -15,6 +16,10 @@ function App() {
 
   const location = useLocation();
 
+  const routeKey = useMemo(() => {
+    return location.key;
+  }, [location.pathname]);
+
   useEffect(() => {
     const newPageActive = searchPage(values(PAGES), location) || PAGES.home;
 
@@ -28,9 +33,16 @@ function App() {
       <Topbar />
 
       <Routes>
-        {values(PAGES).map((page) => (
-          <Route key={page.key} path={page.path} element={page.component} />
-        ))}
+        {values(PAGES).map((page) => {
+          const Component = page.component;
+          return (
+            <Route
+              key={page.key}
+              path={page.path}
+              element={<Component key={routeKey} />}
+            />
+          );
+        })}
       </Routes>
 
       <GlobalModals />
