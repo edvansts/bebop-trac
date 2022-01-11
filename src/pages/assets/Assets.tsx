@@ -42,7 +42,7 @@ function Ativos() {
         }
 
         if (filters.unitSelected) {
-          if (String(asset.companyId) !== filters.unitSelected) {
+          if (String(asset.unitId) !== filters.unitSelected) {
             return false;
           }
         }

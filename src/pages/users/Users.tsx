@@ -38,7 +38,7 @@ function Users() {
         }
 
         if (filters.unitSelected) {
-          if (String(user.companyId) !== filters.unitSelected) {
+          if (String(user.unitId) !== filters.unitSelected) {
             return false;
           }
         }
