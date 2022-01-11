@@ -62,10 +62,20 @@ export const mainApi = createApi({
       providesTags: ["assets"],
     }),
 
+    getAssetById: builder.query<Asset, string>({
+      query: (id) => `/assets/${id}`,
+      providesTags: ["assets"],
+    }),
+
     /* ---------------------------------- Units --------------------------------- */
     getUnits: builder.query<Unit[], void>({
       query: () => `/units`,
       transformResponse: (response: Unit[]) => response,
+      providesTags: ["units"],
+    }),
+
+    getUnitById: builder.query<Unit, string>({
+      query: (id) => `/units/${id}`,
       providesTags: ["units"],
     }),
 
@@ -76,10 +86,20 @@ export const mainApi = createApi({
       providesTags: ["users"],
     }),
 
+    getUserById: builder.query<User, string>({
+      query: (id) => `/users/${id}`,
+      providesTags: ["users"],
+    }),
+
     /* ---------------------------------- Companies --------------------------------- */
     getCompanies: builder.query<Company[], void>({
       query: () => `/companies`,
       transformResponse: (response: Company[]) => response,
+      providesTags: ["companies"],
+    }),
+
+    getCompanyById: builder.query<Company, string>({
+      query: (id) => `/companies/${id}`,
       providesTags: ["companies"],
     }),
   }),
@@ -90,4 +110,8 @@ export const {
   useGetUnitsQuery,
   useGetUsersQuery,
   useGetCompaniesQuery,
+  useGetAssetByIdQuery,
+  useGetUnitByIdQuery,
+  useGetCompanyByIdQuery,
+  useGetUserByIdQuery,
 } = mainApi;
